@@ -6,5 +6,5 @@ class DBTables
     
     const USER				= 'acl_user';
 	
-	const COUNTRY  			= 'tab_country';
+    const STOCK   			= 'tab_stock';
 }

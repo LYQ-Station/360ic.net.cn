@@ -11,7 +11,11 @@
 		<th>仓库</th>
 		<th width="80">询价</th>
 	</tr>
-	<?php for ($i=0;$i<50;$i++):?>
+	<?php if (!count($this->items)): ?>
+	<tr>
+		<td colspan="10" style="text-align:center">没有查询到相关型号的库存。</td>
+	</tr>
+	<?php else: foreach ($this->items as $item):?>
 	<tr>
 		<td>
 			<div class="hide">
@@ -34,5 +38,8 @@
 		<td>xxxx</td>
 		<td><a href="#" class="btn btn-mini btn-info"><i class="icon-plus-sign icon-white"></i>&nbsp;QQ询价</a></td>
 	</tr>
-	<?php endfor;?>
+	<tr>
+		<td colspan="10"><?=$this->navigator?></td>
+	</tr>
+	<?php endforeach; endif;?>
 </table>

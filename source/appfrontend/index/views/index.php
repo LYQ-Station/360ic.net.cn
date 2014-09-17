@@ -89,7 +89,7 @@
 				<label class="control-label">LOGO</label>
 				<div class="controls">
 				    <div class="input-append">
-				    <input class="idx-input-search" type="text">
+				    <input class="idx-input-search" type="text" name="keyword">
 				    <button class="btn btn-primary" type="button" mid="btnSearch">&nbsp;查&nbsp;询&nbsp;</button>
 				    </div>
 				    <span class="help-block">
@@ -191,6 +191,7 @@ $(function () {
 		
 		$.ajax({
 			url:form.action,
+			data:$.param({keyword:form['keyword'].value}),
 			complete:function (data) {
 				$('#result_list').html(data.responseText).find('a[popover]').popover({
 					html:true,

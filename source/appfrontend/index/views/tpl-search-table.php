@@ -28,18 +28,16 @@
 			</div>
 			<a popover="" href="#" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-placement="right" data-original-title="香港美航科技有限公司">香港美航科技有限公司</a>
 		</td>
-		<td>xxxx</td>
-		<td>xxxx</td>
-		<td>xxxx</td>
-		<td>xxxx</td>
-		<td>xxxx</td>
+		<td><?=$item['partno']?></td>
+		<td><?=$item['mfg']?></td>
+		<td><?=$item['qty']?></td>
+		<td><?=$item['dc']?></td>
+		<td><?=$item['pack']?></td>
 		<td><span class="label label-success">现货</span></td>
-		<td>xxxx</td>
-		<td>xxxx</td>
+		<td><?=$item['describe']?></td>
+		<td><?=$item['warehouse']?></td>
 		<td><a href="#" class="btn btn-mini btn-info"><i class="icon-plus-sign icon-white"></i>&nbsp;QQ询价</a></td>
-	</tr>
-	<tr>
-		<td colspan="10"><?=$this->navigator?></td>
 	</tr>
 	<?php endforeach; endif;?>
 </table>
+<?php if (count($this->items)): echo $this->navigator; endif; ?>

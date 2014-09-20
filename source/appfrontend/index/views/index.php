@@ -192,27 +192,40 @@ $(function () {
 		$.ajax({
 			url:form.action,
 			data:$.param({keyword:form['keyword'].value}),
-			complete:function (data) {
-				$('#result_list').html(data.responseText).find('a[popover]').popover({
-					html:true,
-					content:function () {
-						return $(this).prev().html();
-					}
-				}).mouseenter(function () {
-					var self = $(this);
-					self.popover('show').next().mouseleave(function () {
-						self.popover('hide');
-					});
-				}).mouseleave(function (evn) {
-					if (!$(evn.relatedTarget).parentsUntil('[class*=popover]').length)
-					{
-						return;
-					}
-					$(this).popover('hide');
-				})
-			}
-		})
+			complete:fn_search_complete
+		});
 	});
+	
+	function fn_search_complete (data)
+	{
+		$('#result_list').html(data.responseText).find('a[popover]').popover({
+			html:true,
+			content:function () {
+				return $(this).prev().html();
+			}
+		}).mouseenter(function () {
+			var self = $(this);
+			self.popover('show').next().mouseleave(function () {
+				self.popover('hide');
+			});
+		}).mouseleave(function (evn) {
+			if (!$(evn.relatedTarget).parentsUntil('[class*=popover]').length)
+			{
+				return;
+			}
+			$(this).popover('hide');
+		});
+		
+		$('#result_list').find('.text-center>a').click(function (evn) {
+			evn.preventDefault();
+			
+			$.ajax({
+				url:this.href,
+				data:$.param({keyword:form['keyword'].value}),
+				complete:fn_search_complete
+			});
+		});		
+	}
 });
 </script>
 <?= JsUtils::ob_end(); ?>

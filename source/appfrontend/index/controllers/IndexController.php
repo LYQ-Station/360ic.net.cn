@@ -32,34 +32,8 @@ class Index_IndexController extends BaseController
         $model = new IndexSearchModel();
         $data = $model->fetchList($keyword, $page_no);
         $this->view->items = $data->data;
-        $this->view->navigator = $data->pager->get_navigator_str($this->build_url(null,null,null,$params));
+        $this->view->navigator = $data->pager->get_navigator_str($this->build_url(null,null,null,array('keywords'=>$keyword)),null,'text-center');
         
         echo $this->view->render('tpl-search-table.php');
     }
-
-    public function lessAction ()
-    {
-        $this->render('less');
-    }
-
-    public function componentAction ()
-    {
-        $this->render('component');
-    }
-	
-	public function testAction ()
-	{
-		$this->render('test');
-	}
-
-	public function vmlAction ()
-	{
-        $this->_helper->layout->disableLayout();
-		$this->render('vml');
-	}
-
-	public function validateAction ()
-	{
-		$this->render('validate');
-	}
 }

@@ -236,6 +236,11 @@ $(function () {
 		$('#result_list').find('.pagination').find('a').click(function (evn) {
 			evn.preventDefault();
 			
+			if (location.href+'#'==this.href)
+			{
+				return;
+			}
+			
 			$.ajax({
 				url:this.href,
 				data:$.param({keyword:form['keyword'].value}),

@@ -77,28 +77,28 @@
 
   <div class="container">
     <div class="page-header">
-      <h3>深圳市xxx公司</h3>
+      <h3><?=$this->info['company']?></h3>
     </div>
     <p class="lead">
     	<dl class="dl-horizontal">
     		<dt>地址：</dt>
-    		<dd>深圳市xxx区xxx</dd>
+    		<dd><?=$this->info['address']?></dd>
     	</dl>
     	<dl class="dl-horizontal">
     		<dt>电话：</dt>
-    		<dd>0755-xxxxxxxx</dd>
+    		<dd><?=$this->info['phone']?></dd>
     	</dl>
     	<dl class="dl-horizontal">
     		<dt>传真：</dt>
-    		<dd>0755-xxxxxxxx</dd>
+    		<dd><?=$this->info['fax']?></dd>
     	</dl>
     	<dl class="dl-horizontal">
     		<dt>电邮：</dt>
-    		<dd>xxxx@xxx.com</dd>
+    		<dd><?=$this->info['email']?>/dd>
     	</dl>
     	<dl class="dl-horizontal">
     		<dt>联系人：</dt>
-    		<dd>xxxx@xxx.com</dd>
+    		<dd><?=$this->info['attn']?></dd>
     	</dl>
     	<dl class="dl-horizontal">
     		<dt>联系人电话：</dt>
@@ -106,7 +106,7 @@
     	</dl>
     	<dl class="dl-horizontal">
     		<dt>最大上传库存数量：</dt>
-    		<dd><code>100,000</code></dd>
+    		<dd><code><?=$this->info['stockcnt']?></code></dd>
     	</dl>
     </p>
     
@@ -136,6 +136,13 @@
 			</form>
 		</div>
 		<div id="tab2" class="tab-pane">
+			<form class="form-search text-right" name="form-search" action="<?=$this->buildUrl('ajaxitems')?>">
+				<div class="input-append">
+				<input type="text" class="span2 search-query" name="keyword">
+				<button type="submit" class="btn" mid="btn_search">模糊查询</button>
+				</div>
+			</form>
+			<div id="result_list">
 			<table class="table table-striped table-hover">
 				<tr>
 					<th>供应商</th>
@@ -176,6 +183,8 @@
 				</tr>
 				<?php endforeach; endif;?>
 			</table>
+			<?php if (count($this->items)): echo $this->navigator; endif; ?>
+			</div>
 		</div>
 	</div>
 	  
@@ -189,3 +198,56 @@
     <p class="muted credit">360ic.net.cn ®2014. 技术支持:<a href="it-support@360ic.net.cn">it-support@360ic.net.cn</a>&nbsp;&nbsp;&nbsp;商务支持:<a href="trade-support@360ic.net.cn">trade-support@360ic.net.cn</a></p>
   </div>
 </div>
+<?= JsUtils::ob_start(); ?>
+<script type="text/javascript">
+$(function () {
+	var form = document.forms['form-search'];
+
+	$('button[mid=btn_search]').click(function (evn) {
+		evn.preventDefault();
+		
+		$.ajax({
+			url:form.action,
+			data:$.param({keyword:form['keyword'].value}),
+			complete:fn_search_complete
+		});
+	});
+	
+	function fn_search_complete (data)
+	{
+		$('#result_list').html(data.responseText).find('a[popover]').popover({
+			html:true,
+			content:function () {
+				return $(this).prev().html();
+			}
+		}).mouseenter(function () {
+			var self = $(this);
+			self.popover('show').next().mouseleave(function () {
+				self.popover('hide');
+			});
+		}).mouseleave(function (evn) {
+			if (!$(evn.relatedTarget).parentsUntil('[class*=popover]').length)
+			{
+				return;
+			}
+			$(this).popover('hide');
+		});
+		
+		$('#result_list').find('.pagination').find('a').click(function (evn) {
+			evn.preventDefault();
+			
+			$.ajax({
+				url:this.href,
+				data:$.param({keyword:form['keyword'].value}),
+				complete:fn_search_complete
+			});
+		});		
+	}
+	
+	$.ajax({
+		url:form.action,
+		complete:fn_search_complete
+	});
+});
+</script>
+<?= JsUtils::ob_end(); ?>

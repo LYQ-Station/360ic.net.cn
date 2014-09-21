@@ -90,7 +90,7 @@
 				<div class="controls">
 				    <div class="input-append">
 				    <input class="idx-input-search" type="text" name="keyword">
-				    <button class="btn btn-primary" type="button" mid="btnSearch">&nbsp;查&nbsp;询&nbsp;</button>
+				    <button class="btn btn-primary" type="button" mid="btn_search">&nbsp;查&nbsp;询&nbsp;</button>
 				    </div>
 				    <span class="help-block">
 				    	<ul class="nav nav-pills">
@@ -186,7 +186,7 @@ $(function () {
 	
 	on_window_scroll();
 	
-	$('button[mid=btnSearch]').click(function (evn) {
+	$('button[mid=btn_search]').click(function (evn) {
 		evn.preventDefault();
 		
 		$.ajax({
@@ -216,7 +216,7 @@ $(function () {
 			$(this).popover('hide');
 		});
 		
-		$('#result_list').find('.text-center>a').click(function (evn) {
+		$('#result_list').find('.pagination').find('a').click(function (evn) {
 			evn.preventDefault();
 			
 			$.ajax({

@@ -40,4 +40,10 @@ class Index_CompanyController extends BaseController
         
         $this->render('tpl-search-table');
     }
+    
+    public function uploadAction ()
+    {
+        var_dump($_FILES);
+//        echo filesize($_FILES['pfile'][''])
+    }
 }

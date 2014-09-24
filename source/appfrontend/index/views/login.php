@@ -32,10 +32,10 @@
 
 </style>
 <div class="container">
-  <form class="form-signin" action="<?=$this->buildUrl('index','company')?>">
+  <form class="form-signin" action="<?=$this->buildUrl('auth')?>" method="post">
     <h2 class="form-signin-heading">登录</h2>
-    <input type="text" class="input-block-level" placeholder="用户名">
-    <input type="password" class="input-block-level" placeholder="密码">
+    <input type="text" class="input-block-level" placeholder="用户名" name="uname">
+    <input type="password" class="input-block-level" placeholder="密码" name="upwd">
     <label class="checkbox">
       <input type="checkbox" value="remember-me"> 下次自动登录
     </label>

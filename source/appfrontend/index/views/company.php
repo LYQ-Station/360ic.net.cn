@@ -68,7 +68,7 @@
         </button>
         <a class="brand" href="#">360ic</a>
         <ul class="nav pull-right">
-        	<li><a href="#">登出</a></li>
+        	<li><a href="<?=$this->buildUrl('logout','auth')?>">登出</a></li>
         </ul>
         
       </div>
@@ -117,10 +117,10 @@
 
 	<div class="tab-content" id="myTabContent">
 		<div id="tab1" class="tab-pane active">
-			<form action="<?=$this->buildUrl('upload')?>">
+			<form action="<?=$this->buildUrl('upload')?>" target="_blank" method="post" enctype="multipart/form-data">
 				<dl class="dl-horizontal">
 	                <dt><label>产品列表文件</label></dt>
-	                <dd><input type="file"></dd>
+	                <dd><input type="file" name="pfile"></dd>
                 </dl>
                 <dl class="dl-horizontal">
 	                <dt><label>加入方式</label></dt>
@@ -131,7 +131,7 @@
                 </dl>
                 <dl class="dl-horizontal">
 	                <dt></dt>
-	                <dd><button class="btn">上传</button></dd>
+	                <dd><button class="btn">上传</button><input type="submit" value="upload"></dd>
                 </dl>
 			</form>
 		</div>

@@ -1,5 +1,4 @@
 <?php
-define('APP_ADMIN', true);
 //define('LIB_PATH', '/Users/developer/Documents/try/ZendFrameworkExt/');
 define('LIB_PATH', '/Users/lyq/Public/MyWebProjects/ZendFrameworkExt/');
 define('SITE_PATH', dirname($_SERVER['DOCUMENT_ROOT']));
@@ -78,6 +77,7 @@ $router->addRoute(
         array('module' => 'index', 'controller' => 'index', 'action' => 'index')
     )
 );
-//$fc->registerPlugin(new AuthPlugin());
+
+$fc->registerPlugin(new AuthPlugin());
 
 $fc->dispatch();

@@ -31,4 +31,9 @@ class CompanyModel extends BaseModel
         
         return $ret;
     }
+    
+    public function removeAllItems ($cid)
+    {
+        $select = $this->db->delete(DBTables::STOCK, $this->db->quoteInto('cid=?', $cid));
+    }
 }

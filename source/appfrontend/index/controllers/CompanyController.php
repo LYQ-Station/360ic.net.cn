@@ -14,7 +14,7 @@ class Index_CompanyController extends BaseController
     {
         $model = new CompanyModel();
         
-        $this->view->info = $model->fetchCompanyInfo(3);
+        $this->view->info = $model->fetchCompanyInfo($this->token->uid);
         
         $data = $model->fetchItemList(null, 1);
         $this->view->items = $data->data;
@@ -43,7 +43,29 @@ class Index_CompanyController extends BaseController
     
     public function uploadAction ()
     {
-        var_dump($_FILES);
-//        echo filesize($_FILES['pfile'][''])
+        if (!$_FILES['pfile']['size'])
+        {
+            throw new Exception('上传文件为空');
+        }
+        
+        $model = new CompanyModel();
+        
+        if (1 == intval($this->_request->op))
+        {
+            $model->removeAllItems($this->token->uid);
+        }
+        
+        $sql = 'INSERT INTO ' . DBTables::STOCK . ' (partno,qty,pack,dc,mfg,describe,warehouse) VALUES ';
+        
+        $fp = fopen($_FILES['pfile']['tmp_name'], 'r');
+        
+        while (!feof($fp))
+        {
+            $line = fread($fp, 1024);
+            
+            echo $line, "\n";
+        }
+        
+        fclose($fp);
     }
 }

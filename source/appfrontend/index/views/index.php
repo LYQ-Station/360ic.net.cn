@@ -1,7 +1,4 @@
 <style>
-.main_page {
-	margin-top: 150px;
-}
 .nav-tabs > li > a, .nav-pills > li > a {
     line-height: 14px;
     margin-right: 2px;
@@ -18,8 +15,8 @@
     background-image: none;
     border: none;
     min-height: 40px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 0;
+    padding-right: 0;
     box-shadow: none;
 }
 
@@ -30,9 +27,8 @@
 }
 
 .form-msearch {
-    border: 1px solid #e5e5e5;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    margin: 0 auto 20px;
+    border: none;
+    margin: 0 auto 30px;
     position: relative;
 }
 
@@ -67,16 +63,49 @@
 	z-index: 9999;
 	background-color: white;
 }
+
+
+html,
+body {
+    height: 100%;
+}
+
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    /* Negative indent footer by it's height */
+    margin: 0 auto -60px;
+}
+
+#footer {
+    height: 60px;
+    background-color: #f5f5f5;
+}
+
+@media (max-width: 767px) {
+    #footer {
+      margin-left: -20px;
+      margin-right: -20px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+}
+  
+.container .credit {
+    margin: 20px 0;
+}
+
 </style>
 
-<div class="container main_page">
-
+<div id="wrap">
+<div class="container" style="padding-top: 150px;">
 	<div id="head">
 		<div class="navbar">
 	      <div class="navbar-inner">
 	        <div class="nav-collapse collapse">
 	          <ul class="nav">
-	            <li><a href="#">登录</a></li>
+	            <li><a href="<?=$this->buildUrl('index','company')?>" target="_blank">会员登录</a></li>
 	            <li><a href="#about">免费注册</a></li>
 	            <li><a href="#contact">关于我们</a></li>
 	          </ul>
@@ -139,16 +168,12 @@
     
     <div id="result_list"></div>
     
-    <div>
-        <p>
-	        <address>
-			<strong>深圳市xxx公司</strong> 2010-2014 版权所有<br>
-			地址：深圳市xxx区xxx<br>
-			电话：0755-xxxxxxxx<br>
-			电邮：xxxx@xxx.com
-			</address>
-		</p>
-	</div>
+</div>
+</div>
+<div id="footer">
+	<div class="container">
+		<p class="muted credit">360ic.net.cn ®2014. XXX网络科技公司 电话:<a href="tel:0755-12345678">0755-12345678</a> 技术支持:<a href="it-support@360ic.net.cn">it-support@360ic.net.cn</a>&nbsp;&nbsp;&nbsp;商务支持:<a href="trade-support@360ic.net.cn">trade-support@360ic.net.cn</a></p>
+  </div>
 </div>
 <?= JsUtils::ob_start(); ?>
 <script type="text/javascript">

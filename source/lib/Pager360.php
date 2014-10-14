@@ -7,6 +7,14 @@
  */
 class Pager360 extends PageDivide
 {
+    public function divide_page ($sql, $page_recs = null, $force = false)
+	{
+        $this->curr_page_no = 1;
+        $this->total_pages = 99999;
+        $this->sql = $sql;
+        return;
+	}
+    
     /**
 	 * 获取分页代码
 	 *
@@ -30,37 +38,37 @@ class Pager360 extends PageDivide
 			$div .= "<li><a href=\"{$bas_url}{$query}{$sp}page_no/{$nav_info->prev_page}\">&lt;</a></li>";
 
 			//确定序号栏
-		$min = $this->curr_page_no - $list_width;
-		if (0 >= $min)
-		{
-			$min = 1;
-			$max = $min + $list_width * 2;
-		}
-		else
-		{
-			$max = $this->curr_page_no + $list_width;
-		}
-		
-		if ($max > $this->total_pages)
-		{
-			$max = $this->total_pages;
-			$min = $max - $list_width * 2;
-			$min = 0 >= $min ? 1 : $min;
-		}
-
-			//打印序号列
-		for ($i=$min; $i<=$max; $i++)
-		{
-			if ($i == $this->curr_page_no)
-				$no .= '<li><a class="on" href="#">'.$i.'</a></li>';
-			else
-				$no .= "<li><a href=\"{$bas_url}{$query}{$sp}page_no/{$i}\">$i</a></li>";
-		}
-		$div .= $no;
+//		$min = $this->curr_page_no - $list_width;
+//		if (0 >= $min)
+//		{
+//			$min = 1;
+//			$max = $min + $list_width * 2;
+//		}
+//		else
+//		{
+//			$max = $this->curr_page_no + $list_width;
+//		}
+//		
+//		if ($max > $this->total_pages)
+//		{
+//			$max = $this->total_pages;
+//			$min = $max - $list_width * 2;
+//			$min = 0 >= $min ? 1 : $min;
+//		}
+//
+//			//打印序号列
+//		for ($i=$min; $i<=$max; $i++)
+//		{
+//			if ($i == $this->curr_page_no)
+//				$no .= '<li><a class="on" href="#">'.$i.'</a></li>';
+//			else
+//				$no .= "<li><a href=\"{$bas_url}{$query}{$sp}page_no/{$i}\">$i</a></li>";
+//		}
+//		$div .= $no;
 		
 			//如果当前为最后页，则没有下一页
-		if ($nav_info->curr_page_no < $this->total_pages)
-			$div .= "<li><a href=\"{$bas_url}{$query}{$sp}page_no/{$nav_info->next_page}\">&gt;</a></li>";
+//		if ($nav_info->curr_page_no < $this->total_pages)
+			$div .= "<li><a href=\"{$bas_url}{$query}{$sp}page_no/".($this->curr_page_no+1)."\">&gt;</a></li>";
 
 		$div .= '</ul></div>';
 		

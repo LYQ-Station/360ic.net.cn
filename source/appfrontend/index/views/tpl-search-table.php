@@ -20,20 +20,18 @@
 		<td>
 			<div class="hide">
 				<address>
-				<strong>深圳市xxx公司</strong><br>
-				地址：深圳市xxx区xxx<br>
-				电话：0755-xxxxxxxx<br>
-				电邮：xxxx@xxx.com
+				地址：<?=$item['address']?><br>
+				电话：<?=$item['phone']?>
 				</address>
 			</div>
-			<a popover="" href="#" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-placement="right" data-original-title="香港美航科技有限公司">香港美航科技有限公司</a>
+			<a popover="" href="#" data-placement="right" data-original-title="<?=$item['company']?>"><?=$item['company']?></a>
 		</td>
-		<td><?=$item['partno']?></td>
-		<td><?=$item['mfg']?></td>
+		<td><?=$item['model']?></td>
+		<td><?=$item['vandor']?></td>
 		<td><?=$item['qty']?></td>
 		<td><?=$item['dc']?></td>
 		<td><?=$item['pack']?></td>
-		<td><span class="label label-success">现货</span></td>
+		<td><span class="label label-success"><?=$item['type']?></span></td>
 		<td><?=$item['describe']?></td>
 		<td><?=$item['warehouse']?></td>
 		<td><a href="#" class="btn btn-mini btn-info"><i class="icon-plus-sign icon-white"></i>&nbsp;QQ询价</a></td>

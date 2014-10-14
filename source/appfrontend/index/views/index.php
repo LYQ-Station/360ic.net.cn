@@ -99,7 +99,7 @@ body {
 </style>
 
 <div id="wrap">
-<div class="container" style="padding-top: 150px;">
+<div class="container" style="padding-top:150px;padding-bottom:60px;">
 	<div id="head">
 		<div class="navbar">
 	      <div class="navbar-inner">

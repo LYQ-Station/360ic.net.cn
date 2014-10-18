@@ -22,6 +22,16 @@ class Index_IndexController extends BaseController
         $this->render('index');
     }
     
+    public function signupAction ()
+    {
+        $this->render('signup');
+    }
+    
+    public function aboutAction ()
+    {
+        $this->render('about');
+    }
+    
     public function ajaxsearchAction ()
     {
         $params = $this->_getallparams();

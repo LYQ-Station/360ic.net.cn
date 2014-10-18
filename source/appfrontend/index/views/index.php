@@ -106,8 +106,8 @@ body {
 	        <div class="nav-collapse collapse">
 	          <ul class="nav">
 	            <li><a href="<?=$this->buildUrl('index','company')?>" target="_blank">会员登录</a></li>
-	            <li><a href="#about">免费注册</a></li>
-	            <li><a href="#contact">关于我们</a></li>
+	            <li><a href="<?=$this->buildUrl('signup')?>">免费注册</a></li>
+	            <li><a href="<?=$this->buildUrl('about')?>">关于我们</a></li>
 	          </ul>
 	        </div>
 	      </div>

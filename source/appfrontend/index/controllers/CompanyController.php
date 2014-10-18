@@ -16,10 +16,6 @@ class Index_CompanyController extends BaseController
         
         $this->view->info = $model->fetchCompanyInfo($this->token->uid);
         
-        $data = $model->fetchItemList(null, 1);
-        $this->view->items = $data->data;
-        $this->view->navigator = $data->pager->get_navigator_str($this->build_url(null,null,null),null,'text-center');
-        
         $this->render('company');
     }
     
@@ -38,7 +34,7 @@ class Index_CompanyController extends BaseController
         $this->view->items = $data->data;
         $this->view->navigator = $data->pager->get_navigator_str($this->build_url(null,null,null,$params),null,'text-center');
         
-        $this->render('tpl-search-table');
+        $this->render('tpl-company-search-table');
     }
     
     public function uploadAction ()

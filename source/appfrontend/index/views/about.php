@@ -62,27 +62,7 @@
 
 </style>
 <div id="wrap">
-
-      <!-- Fixed navbar -->
-  <div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
-        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="brand" href="#">360ic</a>
-        <div class="nav-collapse collapse">
-          <ul class="nav">
-            <li><a href="/">首页</a></li>
-            <li><a href="#about">注册会员</a></li>
-            <li class="active"><a href="#contact">关于我们</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
-  </div>
+	<?=$this->render('tpl-nav-bar.php');?>
 
   <!-- Begin page content -->
   <div class="container">
@@ -97,8 +77,4 @@
   <div id="push"></div>
 </div>
 
-<div id="footer">
-	<div class="container">
-		<p class="muted credit">360ic.net.cn ®2014. XXX网络科技公司 电话:<a href="tel:0755-12345678">0755-12345678</a> 技术支持:<a href="it-support@360ic.net.cn">it-support@360ic.net.cn</a>&nbsp;&nbsp;&nbsp;商务支持:<a href="trade-support@360ic.net.cn">trade-support@360ic.net.cn</a></p>
-  </div>
-</div>
+<?=$this->render('tpl-footer.php');?>
